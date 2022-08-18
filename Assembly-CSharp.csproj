@@ -36,8 +36,15 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\LogState.cs" />
+     <Compile Include="Assets\Scripts\ClearButton.cs" />
+     <Compile Include="Assets\Scripts\BackButton.cs" />
+     <Compile Include="Assets\Scripts\HandleActiveState.cs" />
+     <Compile Include="Assets\Scripts\GenerateButton.cs" />
+     <Compile Include="Assets\Scripts\DataManager.cs" />
+     <Compile Include="Assets\Scripts\ApplyButton.cs" />
      <Compile Include="Assets\Scripts\AddUser.cs" />
-     <Compile Include="Assets\Scripts\ApplyChange.cs" />
+     <Compile Include="Assets\Scripts\DataContainer.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
