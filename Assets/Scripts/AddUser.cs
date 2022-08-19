@@ -46,6 +46,6 @@ public class AddUser : MonoBehaviour
         userData.transform.SetParent(parent);
         string data = dataManager.GetCorrectFormString();
         userData.transform.Find("User").GetComponent<TMP_InputField>().text = data;
-        dataManager.Reset();
+        // dataManager.Reset();
     }
 }

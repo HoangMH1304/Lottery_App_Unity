@@ -10,6 +10,8 @@ public class HandleOutput : MonoBehaviour
     private GameObject result;
     [SerializeField]
     private Transform parent;
+    [SerializeField]
+    private TMP_Dropdown dropdown;
     private TMP_InputField textField;
     private GenerateButton generateButton;
     private List<Ticket> numMoney = new List<Ticket>();
@@ -17,71 +19,90 @@ public class HandleOutput : MonoBehaviour
     private void Start()
     {
         generateButton = FindObjectOfType<GenerateButton>();
+        // generateButton.OnCall.AddListener(SortOrder);
         generateButton.OnCall.AddListener(SmallestToLargestNum);
     }
-    public void SmallestToLargestNum()
-    {
-        for (int i = 0; i < 100; i++)
-        {
-            int money = LogState.totalMoneyInNumber[i];
-            if (money != 0) InitNumberData(i, money);
-        }
-    }
 
-    public void LargestToSmallestNum()
+    private void SortOrder()
     {
-        for (int i = 99; i >= 0; i--)
-        {
-            int money = LogState.totalMoneyInNumber[i];
-            if (money != 0) InitNumberData(i, money);
-        }
+        dropdown.value = 0;
     }
-
-    public void SmallestToLargestMoney()
-    {
-        InitList();
-        numMoney.Sort(SortByMoney);
-        MultiPrint();
-    }
-
-    public void LargestToSmallestMoney()
-    {
-        InitList();
-        numMoney.Sort(SortByMoney);
-        numMoney.Reverse();
-        MultiPrint();
-    }
-
     private static int SortByMoney(Ticket p1, Ticket p2)
     {
         return p1.money.CompareTo(p2.money);
     }
 
+    private static int SortByNumber(Ticket t1, Ticket t2)
+    {
+        return t1.number.CompareTo(t2.number);
+    }
+
+    public void SmallestToLargestNum()
+    {
+        // InitList();
+        // numMoney.Sort(SortByNumber);
+        LogState.tickets.Sort(SortByNumber);
+        MultiPrint();
+    }
+
+    public void LargestToSmallestNum()
+    {
+        // InitList();
+        // numMoney.Sort(SortByNumber);
+        // numMoney.Reverse();
+        LogState.tickets.Sort(SortByNumber);
+        LogState.tickets.Reverse();
+        MultiPrint();
+    }
+
+    public void SmallestToLargestMoney()
+    {
+        // InitList();
+        // numMoney.Sort(SortByNumber);
+        LogState.tickets.Sort(SortByMoney);
+        MultiPrint();
+    }
+
+    public void LargestToSmallestMoney()
+    {
+        // InitList();
+        // numMoney.Sort(SortByNumber);
+        // numMoney.Reverse();
+        LogState.tickets.Sort(SortByMoney);
+        LogState.tickets.Reverse();
+        MultiPrint();
+    }
+
     private void MultiPrint()
     {
-        for (int i = 0; i < numMoney.Count; i++)
+        for (int i = 0; i < LogState.tickets.Count; i++)
         {
-            int number = numMoney[i].number;
-            int money = numMoney[i].money;
+            int number = LogState.tickets[i].number;
+            int money = LogState.tickets[i].money;
+            // int number = numMoney[i].number;
+            // int money = numMoney[i].money;
             InitNumberData(number, money);
         }
         numMoney.Clear();
     }
 
-    private void InitList()
-    {
-        for (int i = 0; i < 100; i++)
-        {
-            int money = LogState.totalMoneyInNumber[i];
-            Ticket player = new Ticket();
-            player.number = i;
-            player.money = money;
-            if (money != 0) numMoney.Add(player);
-        }
-    }
+    // private void InitList()
+    // {
+    //     // numMoney = LogState.tickets;
+
+    //     // for (int i = 0; i < 100; i++)
+    //     // {
+    //     //     int money = LogState.totalMoneyInNumber[i];
+    //     //     Ticket player = new Ticket();
+    //     //     player.number = i;
+    //     //     player.money = money;
+    //     //     if (money != 0) numMoney.Add(player);
+    //     // }
+    // }
 
     public void InitNumberData(int index, int money)
     {
+        if (money == 0) return;
         var userData = Instantiate(result);
         userData.transform.SetParent(parent);
         var data = userData.transform.Find("Text").GetComponent<TextMeshProUGUI>();

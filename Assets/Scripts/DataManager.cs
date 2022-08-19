@@ -5,7 +5,7 @@ using UnityEngine;
 public class DataManager : MonoBehaviour
 {
     private string standardizedText;
-    public List<Vector2> keyvalues = new List<Vector2>();
+    // public List<Vector2> keyvalues = new List<Vector2>();
 
     public bool IsValidText(string text, bool calculate)
     {
@@ -24,31 +24,41 @@ public class DataManager : MonoBehaviour
         return true;
     }
 
-    public List<Vector2> StringToList(string text)
+    public List<Ticket> StringToList2(string text)
     {
-        List<Vector2> numberAndMoney = new List<Vector2>();
+        List<Ticket> tickets = new List<Ticket>();
         string[] multinumbers = text.Split(';');
         for (int i = 0; i < multinumbers.Length; i++)
         {
             string[] data = SplitUserData(multinumbers, i);
             int num = int.Parse(data[0]);
             int money = int.Parse(data[1]);
-            numberAndMoney.Add(new Vector2(num, money));
+            Ticket ticket = new Ticket(num, money);
+            tickets.Add(ticket);
         }
-        return numberAndMoney;
+        return tickets;
     }
 
     private void Calculate(string[] data)
     {
         int num = int.Parse(data[0]);
         int money = int.Parse(data[1]);
-        LogState.totalMoneyInNumber[num] += money;
+        Ticket ticket = new Ticket(num, money);
+        int index = LogState.FindIndex(ticket);
+        if (index != -1)
+        {
+            LogState.tickets[index].money += money;
+        }
+        else
+        {
+            LogState.tickets.Add(ticket);
+        }
     }
 
-    public void Reset()
-    {
-        keyvalues.Clear();
-    }
+    // public void Reset()
+    // {
+    //     keyvalues.Clear();
+    // }
 
     private static string[] SplitUserData(string[] multinumbers, int i)
     {

@@ -40,7 +40,14 @@ public class Search : MonoBehaviour
         warning.SetActive(false);
         //find and show result
         int number = int.Parse(dataText);
-        int money = LogState.totalMoneyInNumber[number];
+        Ticket ticket = new Ticket(number, 0);
+        int indexInList = LogState.FindIndex(ticket);
+        if (indexInList == -1)
+        {
+            warning.SetActive(true);
+            return;
+        }
+        int money = LogState.tickets[indexInList].money;
         if (money == 0) Debug.Log("Not found");
         else Debug.Log("Found");
         if (money == 0) return;

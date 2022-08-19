@@ -573,7 +573,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 816997228}
   m_HandleRect: {fileID: 816997227}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -3551,7 +3551,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -526, y: 1500.0001}
+  m_AnchoredPosition: {x: -526, y: 1499.9994}
   m_SizeDelta: {x: 1052, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1052360015
@@ -4789,7 +4789,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92e119f8a320c041a8f2ebca8c7056d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyvalues: []
 --- !u!114 &1636588107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4804,6 +4803,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   result: {fileID: 4333573322708010467, guid: 0ffa0678ed8e71941b653ba7b1e98271, type: 3}
   parent: {fileID: 602887090}
+  dropdown: {fileID: 1060313734}
 --- !u!114 &1636588108
 MonoBehaviour:
   m_ObjectHideFlags: 0

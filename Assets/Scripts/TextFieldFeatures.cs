@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class ApplyButton : MonoBehaviour
+public class TextFieldFeatures : MonoBehaviour
 {
     [SerializeField]
     private GameObject applyButton;
@@ -16,7 +16,7 @@ public class ApplyButton : MonoBehaviour
     private DataManager dataManager;
     private AddUser addUser;
     private DataContainer dataContainer;
-    private List<Vector2> numberMoney = new List<Vector2>();
+    private List<Ticket> numberMoney = new List<Ticket>();
 
     private void Start()
     {
@@ -30,19 +30,17 @@ public class ApplyButton : MonoBehaviour
         dataContainer = GetComponent<DataContainer>();
     }
 
-    public void ShowApplyButton()
+    // 12: 3 -> 12: 2 => -1?
+    public void AdjustData()
     {
+        Debug.Log("Select");
         if (!dataManager.IsValidText(inputField.text, false)) return;
-        numberMoney = dataManager.StringToList(inputField.text);
-        // for (int i = 0; i < numberMoney.Count; i++)
-        // {
-        //     LogState.totalMoneyInNumber[(int)numberMoney[i].x] -= (int)numberMoney[i].y;
-        // }
-        // applyButton.SetActive(true);  //modify
+        numberMoney = dataManager.StringToList2(inputField.text);
     }
 
-    public void Apply()
+    public void Apply()     //need modify
     {
+        Debug.Log("Deselect");
         if (dataManager.IsValidText(inputField.text, true))
         {
             inputField.text = dataManager.GetCorrectFormString();
@@ -57,17 +55,22 @@ public class ApplyButton : MonoBehaviour
 
     private void DeleteData()
     {
+        // AdjustData();
         for (int i = 0; i < numberMoney.Count; i++)
         {
-            LogState.totalMoneyInNumber[(int)numberMoney[i].x] -= (int)numberMoney[i].y;
+            // LogState.totalMoneyInNumber[(int)numberMoney[i].x] -= (int)numberMoney[i].y;
+            int indexInList = LogState.FindIndex(numberMoney[i]);
+            LogState.tickets[indexInList].money -= numberMoney[i].money;
         }
+        numberMoney.Clear();
     }
 
     public void Delete()
     {
+        AdjustData();
+        DeleteData();
         Destroy(userData);
         TurnOffActiveState();
-        DeleteData();
     }
 
     private void TurnOffActiveState()

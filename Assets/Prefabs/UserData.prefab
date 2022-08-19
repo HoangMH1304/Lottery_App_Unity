@@ -265,7 +265,7 @@ MonoBehaviour:
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
-  m_HideMobileInput: 0
+  m_HideMobileInput: 1
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
   m_RegexValue: 
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_OnSelect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2605489193739661854}
+      - m_Target: {fileID: 7269438477489818799}
         m_TargetAssemblyTypeName: TextFieldFeatures, Assembly-CSharp
         m_MethodName: AdjustData
         m_Mode: 1
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2605489193739661854}
+      - m_Target: {fileID: 7269438477489818799}
         m_TargetAssemblyTypeName: TextFieldFeatures, Assembly-CSharp
         m_MethodName: Apply
         m_Mode: 1
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_ReadOnly: 0
   m_RichText: 1
   m_GlobalFontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_OnFocusSelectAll: 1
+  m_OnFocusSelectAll: 0
   m_ResetOnDeActivation: 1
   m_RestoreOriginalTextOnEscape: 1
   m_isRichTextEditingAllowed: 0
@@ -479,8 +479,7 @@ GameObject:
   - component: {fileID: 4065917608244809061}
   - component: {fileID: 4065917608244809059}
   - component: {fileID: 4065917608244809058}
-  - component: {fileID: 2605489193739661854}
-  - component: {fileID: -6871606826091594119}
+  - component: {fileID: 7269438477489818799}
   m_Layer: 5
   m_Name: UserData
   m_TagString: Inp
@@ -548,7 +547,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2605489193739661854
+--- !u!114 &7269438477489818799
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -557,25 +556,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4065917608244809060}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 213e698f3c8e85b4ead444553a420a96, type: 3}
+  m_Script: {fileID: 11500000, guid: a1858d17bbbac514ca91898871c345c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   applyButton: {fileID: 4065917608705898525}
   warning: {fileID: 592673079296275565}
   textField: {fileID: 4065917607438380916}
   userData: {fileID: 4065917608244809060}
---- !u!114 &-6871606826091594119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4065917608244809060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37b0e249992df9e4885c82310a3334f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4065917608605425839
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,7 +788,7 @@ PrefabInstance:
     - target: {fileID: 1043144056747928786, guid: 33230de5478fa3442856525560584232, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2605489193739661854}
+      objectReference: {fileID: 7269438477489818799}
     - target: {fileID: 1043144056747928786, guid: 33230de5478fa3442856525560584232, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -943,7 +930,7 @@ PrefabInstance:
     - target: {fileID: 1043144056747928786, guid: 33230de5478fa3442856525560584232, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2605489193739661854}
+      objectReference: {fileID: 0}
     - target: {fileID: 1043144056747928786, guid: 33230de5478fa3442856525560584232, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Apply
