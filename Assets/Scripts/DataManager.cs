@@ -17,6 +17,7 @@ public class DataManager : MonoBehaviour
             string[] data = SplitUserData(multinumbers, i);
             if (data[0].Length > 2 || data.Length != 2) return false;
             if (!IsIntegerNumber(data[0]) || !IsIntegerNumber(data[1])) return false;
+            if (int.Parse(data[1]) == 0) return false;
             StandardizedData(multinumbers, i, data);
             if (calculate == true) Calculate(data);
         }

@@ -6,11 +6,11 @@ public class BackButton : MonoBehaviour
 {
     public void Back()
     {
-        DestroyUI("Out");
+        DestroyUI("Out");   
         var handleActiveState = FindObjectOfType<HandleActiveState>();
         handleActiveState.MultiSetActiveState();
-        DestroyUI("Inp");
-        LogState.ResetValue();
+        // DestroyUI("Inp");
+        // LogState.ResetValue();
     }
 
     public static void DestroyUI(string tag)

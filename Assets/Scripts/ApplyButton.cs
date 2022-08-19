@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class ApplyButton : MonoBehaviour
+public class TextFieldFeatures : MonoBehaviour
 {
     [SerializeField]
     private GameObject applyButton;
@@ -21,12 +21,6 @@ public class ApplyButton : MonoBehaviour
     private void Start()
     {
         GetReference();
-        Init();
-    }
-
-    private void Init()
-    {
-        Debug.Log($"Length size = {numberMoney.Count}");
     }
 
     private void GetReference()
@@ -36,38 +30,49 @@ public class ApplyButton : MonoBehaviour
         dataContainer = GetComponent<DataContainer>();
     }
 
-    public void ShowApplyButton()
+    // 12: 3 -> 12: 2 => -1?
+    public void AdjustData()
     {
+        Debug.Log("Select");
         if (!dataManager.IsValidText(inputField.text, false)) return;
-        Debug.Log("touch");
         numberMoney = dataManager.StringToList(inputField.text);
-        for (int i = 0; i < numberMoney.Count; i++)
-        {
-            LogState.totalMoneyInNumber[(int)numberMoney[i].x] -= (int)numberMoney[i].y;
-        }
-        applyButton.SetActive(true);
+        // applyButton.SetActive(true);
     }
 
     public void Apply()
     {
-        if (inputField.text == "")
-        {
-            Destroy(userData);
-            SetActive();
-            return;
-        }
+        Debug.Log("Deselect");
         if (dataManager.IsValidText(inputField.text, true))
         {
             inputField.text = dataManager.GetCorrectFormString();
-            SetActive();
+            TurnOffActiveState();
         }
         else
         {
             warning.SetActive(true);
         }
+        DeleteData();
     }
 
-    private void SetActive()
+    private void DeleteData()
+    {
+        // AdjustData();
+        for (int i = 0; i < numberMoney.Count; i++)
+        {
+            LogState.totalMoneyInNumber[(int)numberMoney[i].x] -= (int)numberMoney[i].y;
+        }
+        numberMoney.Clear();
+    }
+
+    public void Delete()
+    {
+        AdjustData();
+        DeleteData();
+        Destroy(userData);
+        TurnOffActiveState();
+    }
+
+    private void TurnOffActiveState()
     {
         applyButton.SetActive(false);
         warning.SetActive(false);
