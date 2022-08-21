@@ -5,8 +5,6 @@ using TMPro;
 public class TextFieldFeatures : MonoBehaviour
 {
     [SerializeField]
-    private GameObject applyButton;
-    [SerializeField]
     private GameObject warning;
     [SerializeField]
     private GameObject textField;
@@ -17,7 +15,7 @@ public class TextFieldFeatures : MonoBehaviour
     private AddUser addUser;
     private DataContainer dataContainer;
     private List<Ticket> numberMoney = new List<Ticket>();
-
+    private string temp;
     private void Start()
     {
         GetReference();
@@ -33,16 +31,19 @@ public class TextFieldFeatures : MonoBehaviour
     // 12: 3 -> 12: 2 => -1?
     public void AdjustData()
     {
-        Debug.Log("Select");
-        if (!dataManager.IsValidText(inputField.text, false)) return;
-        numberMoney = dataManager.StringToList2(inputField.text);
+        if (!dataManager.IsValidText(inputField.text)) return;
+        temp = inputField.text;
+        numberMoney = dataManager.StringToList(inputField.text);
+        // DeleteData();
     }
 
-    public void Apply()     //need modify
+    public void Apply()     //need modify x2
     {
         Debug.Log("Deselect");
-        if (dataManager.IsValidText(inputField.text, true))
+        if (dataManager.IsValidText(inputField.text))
         {
+            if (temp == inputField.text) return;
+            dataManager.Sum(inputField.text);
             inputField.text = dataManager.GetCorrectFormString();
             TurnOffActiveState();
         }
@@ -55,10 +56,8 @@ public class TextFieldFeatures : MonoBehaviour
 
     private void DeleteData()
     {
-        // AdjustData();
         for (int i = 0; i < numberMoney.Count; i++)
         {
-            // LogState.totalMoneyInNumber[(int)numberMoney[i].x] -= (int)numberMoney[i].y;
             int indexInList = LogState.FindIndex(numberMoney[i]);
             LogState.tickets[indexInList].money -= numberMoney[i].money;
         }
@@ -75,7 +74,6 @@ public class TextFieldFeatures : MonoBehaviour
 
     private void TurnOffActiveState()
     {
-        applyButton.SetActive(false);
         warning.SetActive(false);
     }
 }

@@ -19,8 +19,8 @@ public class HandleOutput : MonoBehaviour
     private void Start()
     {
         generateButton = FindObjectOfType<GenerateButton>();
-        // generateButton.OnCall.AddListener(SortOrder);
         generateButton.OnCall.AddListener(SmallestToLargestNum);
+        // generateButton.OnCall.AddListener(SortOrder);
     }
 
     private void SortOrder()

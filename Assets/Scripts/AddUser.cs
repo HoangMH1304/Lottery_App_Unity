@@ -30,12 +30,13 @@ public class AddUser : MonoBehaviour
     public void GetUser()
     {
         string data = inputText.text;
-        inputText.text = "";
-        if (!dataManager.IsValidText(data, true))
+        if (!dataManager.IsValidText(data))
         {
             warning.SetActive(true);
             return;
         }
+        dataManager.Sum(data);
+        inputText.text = "";
         warning.SetActive(false);
         InitUserData();
     }

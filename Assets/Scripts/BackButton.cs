@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BackButton : MonoBehaviour
 {
+    [SerializeField]
+    private TMP_Dropdown dropdown;
     public void Back()
     {
-        DestroyUI("Out");   
+        dropdown.value = 0;
+        DestroyUI("Out");
         var handleActiveState = FindObjectOfType<HandleActiveState>();
         handleActiveState.MultiSetActiveState();
         // DestroyUI("Inp");

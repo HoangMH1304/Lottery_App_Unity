@@ -3551,7 +3551,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -526, y: 1499.9994}
+  m_AnchoredPosition: {x: -526, y: 1500.0001}
   m_SizeDelta: {x: 1052, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1052360015
@@ -3687,7 +3687,7 @@ MonoBehaviour:
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
-  m_HideMobileInput: 0
+  m_HideMobileInput: 1
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
   m_RegexValue: 
@@ -4765,6 +4765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc7edbbee824754a8e5dea6ae5e84cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropdown: {fileID: 1060313734}
 --- !u!114 &1636588105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5264,7 +5265,7 @@ GameObject:
   - component: {fileID: 1715518318}
   m_Layer: 5
   m_Name: Warning
-  m_TagString: Warning
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

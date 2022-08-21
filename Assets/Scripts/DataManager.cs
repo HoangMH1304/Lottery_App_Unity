@@ -5,26 +5,35 @@ using UnityEngine;
 public class DataManager : MonoBehaviour
 {
     private string standardizedText;
-    // public List<Vector2> keyvalues = new List<Vector2>();
 
-    public bool IsValidText(string text, bool calculate)
+    public bool IsValidText(string text)
     {
         standardizedText = "";
         if (text == "") return false;
         string[] multinumbers = text.Split(';');
         for (int i = 0; i < multinumbers.Length; i++)
         {
+            if (multinumbers[i] == "") return false;
             string[] data = SplitUserData(multinumbers, i);
             if (data[0].Length > 2 || data.Length != 2) return false;
             if (!IsIntegerNumber(data[0]) || !IsIntegerNumber(data[1])) return false;
             if (int.Parse(data[1]) == 0) return false;
             StandardizedData(multinumbers, i, data);
-            if (calculate == true) Calculate(data);
         }
         return true;
     }
 
-    public List<Ticket> StringToList2(string text)
+    public void Sum(string text)
+    {
+        string[] multinumbers = text.Split(';');
+        for (int i = 0; i < multinumbers.Length; i++)
+        {
+            string[] data = SplitUserData(multinumbers, i);
+            Calculate(data);
+        }
+    }
+
+    public List<Ticket> StringToList(string text)
     {
         List<Ticket> tickets = new List<Ticket>();
         string[] multinumbers = text.Split(';');
@@ -54,11 +63,6 @@ public class DataManager : MonoBehaviour
             LogState.tickets.Add(ticket);
         }
     }
-
-    // public void Reset()
-    // {
-    //     keyvalues.Clear();
-    // }
 
     private static string[] SplitUserData(string[] multinumbers, int i)
     {
