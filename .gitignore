@@ -4,3 +4,6 @@
 /obj/
 /Temp/
 /UserSettings/
+/.gitignore/
+/Lottery.sln/
+/Assembly-CSharp.csproj/
