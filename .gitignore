@@ -4,3 +4,6 @@
 /obj/
 /Temp/
 /UserSettings/
+/.gitignore
+/.sln
+/.csproj
